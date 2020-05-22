@@ -1,0 +1,15 @@
+twitter_username: paoloo
+github_username:  paoloo
+linkedin_username: paoloo
+instagram_username: paolocmo
+markdown: kramdown
+theme: minima
+plugins:
+  - jekyll-feed
+url: https://paoloo.github.io/
+baseurl: /blog
+title: A random box to store random stuff, randomly
+
+email: paolo@firstfoundry.co
+name: 'Paolo&#039;s notes'
+description: thoughts and craziness of Paolo Oliveira's inner self
