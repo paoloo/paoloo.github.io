@@ -7,7 +7,7 @@ theme: minima
 plugins:
   - jekyll-feed
 url: "https://paoloo.github.io"
-baseurl: "https://paoloo.github.io"
+baseurl: ""
 production_url: https://paoloo.github.io/blog/
 title: A random box to store random stuff, randomly
 
