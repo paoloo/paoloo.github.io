@@ -6,7 +6,6 @@ markdown: kramdown
 theme: minima
 plugins:
   - jekyll-feed
-url: https://paoloo.github.io/
 baseurl: /blog
 production_url: https://paoloo.github.io/blog/
 title: A random box to store random stuff, randomly
