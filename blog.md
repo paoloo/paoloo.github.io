@@ -3,6 +3,8 @@
 # To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 
 layout: page
+title: Blog
+permalink: /blog/
 ---
 <main class="container">
   <div class="row">

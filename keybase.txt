@@ -1,0 +1,76 @@
+==================================================================
+https://keybase.io/paolooliveira
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://paolo.zone
+  * I am paolooliveira (https://keybase.io/paolooliveira) on keybase.
+  * I have a public key with fingerprint A0CE 2402 B756 0064 303F  5524 F95C 1A5D A519 9C2B
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0120cccd8a0c2a18333cb1d45566277698669b7ade8685d42ce880d02c4ca3bbd2350a",
+      "fingerprint": "a0ce2402b7560064303f5524f95c1a5da5199c2b",
+      "host": "keybase.io",
+      "key_id": "f95c1a5da5199c2b",
+      "kid": "0101c9e9f50485b8f21d5cc7fba927f5b9a7d74f0824613c9e85a7f00b9357d92a2d0a",
+      "uid": "8f8e3537ef824a60bb729756de0b4700",
+      "username": "paolooliveira"
+    },
+    "service": {
+      "hostname": "paolo.zone",
+      "protocol": "http:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "ctime": 1568659894,
+  "expire_in": 157680000,
+  "prev": "787234fd078ee67cff1d19698b76bb37726508f2e5d9b02a23cef0bdf69c16e1",
+  "seqno": 32,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.1.3
+Comment: https://keybase.io/crypto
+
+yMN3AnicbZJ7UFRVHMcXeQmkbFOCsDHUlShjwXOf515grGkMJcbATbJkYb2Pc+Hy
+2LvtA1gMiByGYShznEghwAyNKTQaBMvCUQtBYIpRoCylnISMZuQxBSS02l0mZ/qj
+88+Z8zuf7/d8z++c3jW+umCfO+bI7OMRTXE+QxcaXbrsyh9O78UEVXJjiXuxArQy
+oUIJOZyWAkXCEjGAE0AURYnlgUjwOEuSpCjgEkXTDENAyHAsw3AC5CXEMiwtUYSI
+WBZIgBApkScFQSJIGvCYEZMVay6y2+yK1anZam6IoAAhQJoBgKFIQMo0TVAyR4s4
+T0s8jXOcSAiaME91eBVaOIF3oARF1WrawrIS73/4+7kBLnKIk2lAsbTAygQu0aII
+ZYHnCCjTAsdDCVIyYAmKwUkNZWkeygAIHElDiSN4QlrJ7VqxY2UWkTQJkazxPAME
+ARKcll1CQKAgAF7QgexWvghptI1XC1W1UClGip3Hyo2YtlWsiMjbXe91/osllKlW
+pMltdtWpimqhVs9zOm2JXpnTbfNyJUiw/OtgERSrpHVSExQju0NRrVgirpGiU/Fa
+4jTDMjTHcpQRQ6U2xY4sipegIcMCbXiPQcWaJWQhQVKyBCCLEANFWcYlnNNeU4CM
+IJAQEgwNtKYhWuIEoDWDFJEMBElmOBFnEI557/SqVcUSSULLyedqng4l18o7XXaE
+lX91weyn8wnWBfiv8n4xXXCQ/v7Hq48JvZeta416JWb53Gz//PL6yrbO/Qc8d48G
+HjtQMKYUtVabBvNLGkeH2vsvTUWExG34DDw3O2kMyKgONG7x7CKuWm/dCYiNP9R7
+cr9oD25/vCE9c2fJ8kwO2ZG0teDv5se6hvB1S9ODXMgXfU+kTj2kX3xzmBlI/d4C
+Xz8XmxS1oWN9aGm8WnTqPc+2665rR/Y9f7vM70TuuGc4lQv7rv6bY0X3fJPyGhqq
+TJFPLWZsIq9c3n5mCk4O7Ehrx2qZvBGzK+ev2aB62GGY37zR1He45TwZ/0cWE7cN
+W0xo6q9Knyhdc33Ho22vseHrKsSnzXOZ7G73aN/lwfrVZrt7Psva3OhfsrPlVPeT
+NS+megLzLzb1vFXTFRO69FJB5t2b75780jf2k+mWmorTC10ht2OP+s/1R0f7B6aN
+5I8evPrnM+6ofRnpo0z5mWybYeTZ9/eYRyIme3o+tuqOm9xzt7JWXaSWDClh3b2G
+3a2fBrjCxsarFmZewA7fDDeMba3b/kCd/lJt6k8Lq2t/+3HANv7hFDiRs/D1iOmd
+jL5HSupSWpsPJm/2n54Kt7S1qL+vLfP4RXe3SI6Xx852fD7xc+V5/Qd9altyOxe1
+q6IuOeDIleWbH8UHzBg704aHN+0x/KKvrCoaPNs8in7Nj4xuDK6eqTW037iRInxr
+WvvwoQeD0sHb+o2dSRNv2MZLG679A08DwcE=
+=BfdM
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/paolooliveira
+
+==================================================================
+
