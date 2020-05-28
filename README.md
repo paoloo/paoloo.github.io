@@ -1,2 +1,2 @@
 # paoloo.github.io
-personal page
+A working [jekyll](https://jekyllrb.com)-based page and blog. With external domain and a github-provided SSL.
