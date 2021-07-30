@@ -5,7 +5,7 @@ a,a:link,a:active,a:visited{color:#157874;text-decoration:none;}
 a:hover{color:#4AA4A3;text-decoration:none;}
 .measure a,.measure a:link,.measure a:active,.measure a:visited{color:#3881D3;text-decoration:none;}
 .min-width{position:relative;top:0;margin:0 auto;padding:0 12px 0 32px;width:70%;z-index:0;height:auto;}hr{border:0;background-image:url(dotline.png);background-repeat:repeat-x;height:5px;width:100%;}
-.shapka{height:35px; background:#ede8e8;}
+.shapka{height:50px; background:#ede8e8;}
 .shapka_left{float:left;width:245px;padding-right:45px;height:100%;}
 .shapka_left .dotline{margin-top:14px;margin-bottom:1px;}
 .shapka_right{vertical-align:bottom;}
