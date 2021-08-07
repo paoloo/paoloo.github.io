@@ -21,5 +21,5 @@ The result was good. I already have enough to run some CRISPR experiments and gr
 
 <figure class="wp-block-image"><img src="{{ site.baseurl }}/uploads/2020/12/lab-stuff.jpeg" alt="" class="wp-image-625" /><figcaption>my lab stuff</figcaption></figure>
 
-It's a start and there is a lot of room for imprivement. I'll upgrade my lab as soon as I get more space.
+It's a start and there is a lot of room for improvement. I'll upgrade my lab as soon as I get more space.
 
