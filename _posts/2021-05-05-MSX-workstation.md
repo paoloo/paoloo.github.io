@@ -45,9 +45,16 @@ I have 1 IDE-ATA, 2 SD and 1 USB from Technobytes, all containing memory mapper 
 
 - Sound
 
-The original FM-PAC ( [MSX-MUSIC](https://www.msx.org/wiki/MSX-MUSIC) standard ) and the Technobyte's AudioWave ( [MSX-AUDIO](https://www.msx.org/wiki/MSX-AUDIO) standard )
+The original FM-PAC ( [MSX-MUSIC](https://www.msx.org/wiki/MSX-MUSIC) standard ) and the Technobytes' AudioWave ( [MSX-AUDIO](https://www.msx.org/wiki/MSX-AUDIO) standard )
 
 <figure class="wp-block-image"><img src="{{ site.baseurl }}/uploads/2021/05/FMPAC.jpeg"     alt="" class="wp-image-625" width="50%" /><figcaption>FM-PAC</figcaption></figure>
+<figure class="wp-block-image"><img src="{{ site.baseurl }}/uploads/2021/05/audiowave.jpeg"     alt="" class="wp-image-625" width="50%" /><figcaption>Audiowave</figcaption></figure>
+
+- Video
+
+Tecnobytes' V9990: the Powergraph Light
+
+<figure class="wp-block-image"><img src="{{ site.baseurl }}/uploads/2021/05/V9990.jpeg"     alt="" class="wp-image-625" width="50%" /><figcaption>FM-PAC</figcaption></figure>
 
 - Slot Expander
 
