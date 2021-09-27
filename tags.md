@@ -22,7 +22,7 @@ permalink: /tags/
 <div style="div { display: block; height:72px; margin:-72px 0 0; }">
 {% for tag in site.tags %}
  <span>
-    <a href="#{{ tag | first | slugify }}"> &rarr;{{ tag[0] | replace:'-', ' ' }} </a> &nbsp;&nbsp;&nbsp;
+    <a href="#{{ tag | first | slugify }}" style="font-size: {{ tag | last | size  |  times: 4 | plus: 80  }}%"> &rarr;{{ tag[0] | replace:'-', ' ' }} </a> &nbsp;&nbsp;&nbsp;
 </span>
 {% endfor %}
 </div>
