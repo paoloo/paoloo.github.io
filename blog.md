@@ -11,7 +11,7 @@ permalink: /blog/
     <div class="col-2">
       <br/>
       {% for post in site.posts %}
-        <div class="post-meta" style="color:#000;">{{ post.date | date: '%B %d, %Y' }}  <div style="color:#c0c0c0;font-size: 11px;">{{ post.tags | join:", " }}</div> </div>
+        <div class="post-meta" style="color:#f3980b;">{{ post.date | date: '%B %d, %Y' }}  <div style="color:#c0c0c0;font-size: 11px;">{{ post.tags | join:", " }}</div> </div>
         <a class="post-link" href="{{ post.url }}">{{ post.title }}</a>
         <p class="post-meta">{{ post.content | strip_html | truncatewords: 50 }}
           <a class="post-link" href="{{ post.url }}" style="font-size: 14px;text-align:right;">[ Read more ]</a>
