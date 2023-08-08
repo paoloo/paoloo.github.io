@@ -5,7 +5,7 @@ date: 2022-10-02T22:00:43+00:00
 author: paolo
 layout: post
 guid: http://paolo.zone/blog/?p=635
-permalink: /2022/09/22/first-radio-experiments-on-osx/
+permalink: /2022/10/02/first-radio-experiments-on-osx/
 categories:
   - en-US
 tags:
