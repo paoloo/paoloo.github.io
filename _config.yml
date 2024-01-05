@@ -10,6 +10,7 @@ production_url: https://paoloo.github.io/blog/
 email: paolocmo@gmail.com
 name: 'Paolo&#039;s notes'
 
+remote_theme: jekyll/minima
 minima:
   skin: dark
   social_links:
@@ -27,10 +28,10 @@ linkedin_username: paoloo
 instagram_username: paolocmo
 markdown: kramdown
 
-theme: minima
 
 sass:
   sass_dir: _sass
 
 plugins:
+  - jekyll-remote-theme
   - jekyll-feed
