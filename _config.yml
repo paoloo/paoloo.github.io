@@ -27,7 +27,7 @@ linkedin_username: paoloo
 instagram_username: paolocmo
 markdown: kramdown
 
-theme: minimal
+theme: minima
 
 sass:
   sass_dir: _sass
