@@ -32,7 +32,7 @@ permalink: /tags/
 <br>
 
 {% for tag in site.tags %}
-  <h3 id="{{ tag[0] | slugify }}">{{ tag[0] }}</h3>
+  <h3 id="{{ tag[0] | slugify }}" style="text-shadow: 3px 0px 5px rgba(255,0,255,0.7), -3px 0px 5px rgba(50,50,255,1);">{{ tag[0] }}</h3>
   <ul>
     {% for post in tag[1] %}
       <li><a href="{{ post.url }}">{{ post.title }}</a></li>
