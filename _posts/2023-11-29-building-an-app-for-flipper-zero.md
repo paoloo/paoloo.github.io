@@ -13,7 +13,7 @@ tags:
   - RF
 ---
 
-Igonna use python and <a href="https://github.com/flipperdevices/flipperzero-ufbt">uFBT</a> ("micro Flipper Build Tool") is a cross-platform tool for building applications for Flipper Zero. It is a simplified version of <a href="https://github.com/flipperdevices/flipperzero-firmware/blob/dev/documentation/fbt.md">fbt (Flipper Build Tool)</a>.
+I gonna use python and <a href="https://github.com/flipperdevices/flipperzero-ufbt">uFBT</a> ("micro Flipper Build Tool"), a cross-platform tool for building applications for Flipper Zero. It is a simplified version of <a href="https://github.com/flipperdevices/flipperzero-firmware/blob/dev/documentation/fbt.md">fbt (Flipper Build Tool)</a>.
 
 I did install it with `python3 -m pip install --upgrade ufbt` and run `ufbt` for the first time to download the flipper firmware as well as all dependencies. If you want to work with specific versions of the firmware, change the `channel`(think of this as a branch, which can be "dev", "rc" or "release") using something like `ufbt update --channel=dev`.
 
