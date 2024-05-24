@@ -16,7 +16,7 @@ tags:
 ---
 The ideia was to code an ELF malware smaller then **1kb** to insert it, encoded, inside a bacteriophage modded with _CRISPR/Cas9_ bringing an artistic view of a biologic infector containing a digital infector, an ode to singularity.
 
-Well, to begin, we gonna use python&#8217;s **pwntool** to generate the base code. On linux, on my test box at digitalocean, I installed with pip. Then,
+Well, to begin with, we gonna use python&#8217;s **pwntool** to generate the base code. On linux, on my test box at digitalocean, I installed with pip. Then,
 
 <pre class="brush: python; title: ; notranslate" title="">paolo@kabbalah:~$ python
 Python 2.7.12 (default, Dec  4 2017, 14:50:18)
@@ -55,12 +55,12 @@ lnxmw1: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), statically linked, 
 paolo@kabbalah:~$
 </pre>
 
-As we could see, the binary was ok but was too big(**4.7kb**), we have to make it better, but first I want to install on my macbook. To install it on my OSX sierra was a little tricky as pip3 version was not working. I solved with:
+As we can see, the binary was ok but too big(**4.7kb**), we have to improve it but first I want to install everything on my macbook. To install the environment on my `OSX sierra` was a little tricky as pip3 version was not working. I solved with:
 
 <pre class="brush: plain; title: ; notranslate" title="">$ python3 -m pip install git+https://github.com/arthaud/python3-pwntools.git
 </pre>
 
-after installed, I also had to install **nasm** with **brew install nasm**. So, now I had a functional environment but the binary was still too big. Then, I start to look for some elf binary templates to hack into. After check /usr/include/elf.h, _readelf_ and data from generated asm from _pwn_, I endded up with the following script:
+after installed, I also had to install **nasm** with **brew install nasm**. So, I had a working environment. The binary tho was still too big. Then, I start to look for some `elf` binary templates to hack into. After checking `/usr/include/elf.h`, _readelf_ and data from generated asm from _pwn_, I endded up with the following script:
 
 <pre class="brush: python; title: ; notranslate" title="">import os, random, subprocess, string
 from pwn import *
@@ -143,12 +143,12 @@ paolo@daath ~/Workspace $
 
 this **corrupted section header** size exist due to the forced ASM.
 
-To test, in a screen, run
+To test it, on a `screen`, run
 
 <pre class="brush: plain; title: ; notranslate" title="">$ nc -l 31337
 </pre>
 
-and, on the other, run the binary. It&#8217;s beautiful and just **242 bytes!!!**
+and, on another, run the binary itself. It&#8217;s beautiful and just **242 bytes!!!**
 
 Next steps are to use GETHOSTBYNAME and write an infector.
 
