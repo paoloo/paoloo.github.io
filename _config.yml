@@ -1,0 +1,33 @@
+title: A random box to store random stuff, randomly
+author:
+  name: Paolo Oliveira
+  email: paolocmo@gmail.com
+description: thoughts and craziness of Paolo Oliveira's inner self
+
+url: "https://paoloo.github.io"
+baseurl: ""
+production_url: https://paoloo.github.io/blog/
+email: paolocmo@gmail.com
+name: 'Paolo&#039;s notes'
+
+remote_theme: jekyll/minima
+minima:
+  skin: dark
+  social_links:
+    - { platform: twitter, user_url: "https://twitter.com/paoloo" }
+    - { platform: github, user_url: "https://github.com/paoloo" }
+    - { platform: instagram, user_url: "https://www.instagram.com/paolocmo" }
+
+twitter_username: paoloo
+github_username:  paoloo
+linkedin_username: paoloo
+instagram_username: paolocmo
+markdown: kramdown
+
+
+sass:
+  sass_dir: _sass
+
+plugins:
+  - jekyll-remote-theme
+  - jekyll-feed

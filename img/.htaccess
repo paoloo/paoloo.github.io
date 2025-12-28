@@ -1,0 +1,4 @@
+Options +FollowSymlinks
+RewriteEngine On
+RewriteBase /
+RewriteRule ^(.+).png$ /img/index.php?id=$1 [NC,L]

@@ -1,0 +1,40 @@
+<?php
+function getUserIpAddr(){
+    if(!empty($_SERVER['HTTP_CLIENT_IP'])){
+        //ip from share internet
+        $ip = $_SERVER['HTTP_CLIENT_IP'];
+    }elseif(!empty($_SERVER['HTTP_X_FORWARDED_FOR'])){
+        //ip pass from proxy
+        $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+    }else{
+        $ip = $_SERVER['REMOTE_ADDR'];
+    }
+    return $ip;
+}
+$u_agent = $_SERVER['HTTP_USER_AGENT'];
+$platform = 'Unknown';
+if (preg_match('/linux/i', $u_agent)) {
+    $platform = 'linux';
+  }elseif (preg_match('/macintosh|mac os x/i', $u_agent)) {
+    $platform = 'mac';
+  }elseif (preg_match('/windows|win32/i', $u_agent)) {
+    $platform = 'windows';
+  }
+
+$text = "Hey ".getUserIpAddr().", dont use $platform!";
+
+$my_img = imagecreate( 350, 80 );
+$background  = imagecolorallocate( $my_img, 0,   0,   255 );
+$text_colour = imagecolorallocate( $my_img, 255, 255, 0 );
+$line_colour = imagecolorallocate( $my_img, 128, 255, 0 );
+imagestring( $my_img, 4, 30, 25, $text, $text_colour );
+imagesetthickness ( $my_img, 5 );
+imageline( $my_img, 30, 45, 310, 45, $line_colour );
+
+header( "Content-type: image/png" );
+imagepng( $my_img );
+imagecolordeallocate( $line_color );
+imagecolordeallocate( $text_color );
+imagecolordeallocate( $background );
+imagedestroy( $my_img );
+?> 
