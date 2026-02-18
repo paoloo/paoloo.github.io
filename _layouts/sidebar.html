@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="{{ page.lang | default: site.lang | default: 'en' }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% if page.title %}{{ page.title }} · {% endif %}{{ site.title | default: site.name }}</title>
+    <meta name="description" content="{{ page.excerpt | strip_html | default: site.description }}">
+    <link rel="stylesheet" href="{{ '/site.css' | relative_url }}" type="text/css" />
+    <link rel="stylesheet" href="{{ '/assets/syntax.css' | relative_url }}" type="text/css" />
+  </head>
+  <body class="site">
+    <div class="layout">
+      <aside class="sidebar">
+        <img class="sidebar__photo" src="{{ '/me.jpg' | relative_url }}" alt="Paolo Oliveira" />
+        <div class="sidebar__inner">
+          <div>
+            <a class="brand" href="{{ '/' | relative_url }}">Paolo Oliveira</a>
+            <div class="brand__subtitle">Researcher &amp; System Engineer</div>
+          </div>
+          <nav class="nav">
+            <a class="{% if page.url == '/' %}active{% endif %}" href="{{ '/' | relative_url }}">Home</a>
+            <a class="{% if page.url contains '/about' %}active{% endif %}" href="{{ '/about/' | relative_url }}">About</a>
+            <a class="{% if page.url contains '/academics' %}active{% endif %}" href="{{ '/academics/' | relative_url }}">Academics</a>
+            <div class="nav-inline">
+              <a class="{% if page.url contains '/blog' %}active{% endif %}" href="{{ '/blog/' | relative_url }}">Blog</a>
+              <span> / </span>
+              <a class="{% if page.url contains '/tags' %}active{% endif %}" href="{{ '/tags/' | relative_url }}">Tags</a>
+            </div>
+            <a class="{% if page.url contains '/travel' %}active{% endif %}" href="{{ '/travel/' | relative_url }}">Travel</a>
+          </nav>
+
+        </div>
+      </aside>
+      <main class="content">
+        {% unless layout.hide_title or page.hide_title %}
+          {% if page.title %}<h1 class="page-title">{{ page.title }}</h1>{% endif %}
+        {% endunless %}
+        {{ content }}
+      </main>
+    </div>
+  </body>
+</html>

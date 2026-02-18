@@ -24,6 +24,10 @@ linkedin_username: paoloo
 instagram_username: paolocmo
 markdown: kramdown
 
+kramdown:
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: 'highlight'
 
 sass:
   sass_dir: _sass

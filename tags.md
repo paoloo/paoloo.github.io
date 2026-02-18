@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: sidebar
 title: Tags
 permalink: /tags/
 ---
