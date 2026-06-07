@@ -19,11 +19,7 @@ This post is about the part that happens before that: training the model from sc
 
 By "from scratch", I do not mean writing backpropagation by hand. I mean starting with public astronomy catalogs, downloading the data, building a labeled dataset, training a model, exporting it, and checking that the exported model works. That is the workflow students need to understand before they start worrying about bigger neural networks.
 
-The example comes from:
-
-```text
-~/Workspace/SETI/cyberether-inference/scripts/train_asteroid_classifier.py
-```
+> This example comes from `~/Workspace/SETI/cyberether-inference/scripts/train_asteroid_classifier.py` which is available in the end of this post. Also, this post is converted from my obsidian notes so it may render something weird. sorry in advance.
 
 The goal is simple: train a classifier that receives a 16-point asteroid reflectance spectrum from Gaia DR3 and predicts a broad Bus-DeMeo taxonomic complex:
 
