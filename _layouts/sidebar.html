@@ -7,6 +7,17 @@
     <meta name="description" content="{{ page.excerpt | strip_html | default: site.description }}">
     <link rel="stylesheet" href="{{ '/site.css' | relative_url }}" type="text/css" />
     <link rel="stylesheet" href="{{ '/assets/syntax.css' | relative_url }}" type="text/css" />
+    {% if page.math %}
+      <script>
+        window.MathJax = {
+          tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']]
+          }
+        };
+      </script>
+      <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    {% endif %}
   </head>
   <body class="site">
     <div class="layout">

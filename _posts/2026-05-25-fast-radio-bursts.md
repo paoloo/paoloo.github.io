@@ -4,6 +4,7 @@ date: 2026-05-25 12:00:00 -0300
 author: paolo
 layout: post
 permalink: /2026/05/25/fast-radio-bursts/
+math: true
 categories:
   - en-US
 tags:

@@ -4,6 +4,7 @@ date: 2026-05-27 12:00:00 -0300
 author: paolo
 layout: post
 permalink: /2026/05/27/dedispersion/
+math: true
 categories:
   - en-US
 tags:
