@@ -5,3 +5,5 @@ _site
 .DS_Store
 _posts/.obsidian/
 _posts/_template/
+res/*.o
+res/*.prg
