@@ -47,15 +47,36 @@ Related notes:
 
 ## Autonomous spacecraft and flight software
 
-My aerospace work focuses on small spacecraft, onboard autonomy and software that remains understandable under strict power, memory, timing and reliability constraints. I am finishing a master's in aerospace engineering focused on machine-learning-based CubeSat design and LLM-based satellite and ground-station orchestration.
+My aerospace work focuses on CubeSat development, onboard autonomy and software that remains understandable under strict power, memory, timing and reliability constraints. I am finishing a master's in aerospace engineering focused on machine-learning-based CubeSat design and LLM-based satellite and ground-station orchestration.
+
+I work across the spacecraft and ground segments rather than treating them as separate systems. This includes flight software, telemetry and telecommand paths, tracking-station software, radio and antenna control, pass scheduling, telemetry processing and the operational tooling needed to follow a spacecraft from contact planning to data delivery.
+
+### Agentic CubeSat and ground-station operations
+
+One of my main research directions is the agentic orchestration of tracking and telemetry stations. I am investigating systems where constrained agents coordinate station availability, pass prediction, radio configuration, antenna tracking, telemetry reception, decoding and operational handoffs across one or more ground stations.
+
+I also work on agentic CubeSat management. In this model, agents assist with spacecraft health assessment, telemetry interpretation, anomaly triage, resource planning, payload scheduling and ground-contact preparation. The goal is not unconstrained autonomous command. The architecture keeps permissions, operational limits, verification and human authorization explicit.
+
+Model Context Protocol (MCP) servers act as controlled interfaces between agents, ground-station services and spacecraft operations. They expose narrowly scoped tools for telemetry access, command preparation, station control and mission data while preserving schemas, authorization boundaries, audit trails and the distinction between proposing an action and executing it.
+
+### CubeSat security and FPGA payloads
+
+Security is part of the spacecraft architecture, not an external layer added after integration. My interests include threat modeling for CubeSats and their ground infrastructure, command authentication, replay protection, secure boot and firmware updates, key management, payload isolation, radio-link security and the protection of telemetry and mission data pipelines.
+
+I am also interested in FPGA-based payloads and hardware/software co-design for small spacecraft. FPGAs provide a useful path for deterministic, low-latency processing close to the instrument, including digital signal processing, filtering, compression, feature extraction and event detection before data reaches the flight computer or downlink. This work connects payload design to timing, power, thermal and fault-containment constraints.
 
 Topics I am exploring include:
 
 - deterministic scheduling for constrained flight computers
 - onboard inference and TinyML under power budgets
 - fault-tolerant software architecture
-- autonomous mission planning and ground-station operations
+- CubeSat tracking, telemetry and telecommand systems
+- multi-station pass scheduling and telemetry orchestration
+- agentic spacecraft health, payload and resource management
+- MCP-based interfaces between agents, spacecraft and ground stations
 - LLM integration with explicit tools, constraints and verification
+- CubeSat, payload and ground-segment security
+- FPGA payloads and onboard signal processing
 - hardware-in-the-loop measurement of timing, power and thermal behavior
 
 [Pulse](https://github.com/paoloo/pulse) is one result of this direction: a small deterministic scheduler for periodic tasks on resource-constrained microcontrollers.
