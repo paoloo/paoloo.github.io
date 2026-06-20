@@ -1,10 +1,8 @@
 ---
 layout: sidebar
-title: Academics
-permalink: /academics/
+title: Publications
+permalink: /publications/
 ---
-
-<h2>Publications</h2>
 
 <p><a target="_blank" href="http://dx.doi.org/10.3390/s18051312"><img src="/res/ico_doi.gif" style="display: inline-block; width: 26px; height: 11px;" alt="DOI"/></a> <a href="/papers/SENSORS2018.pdf">Infrastructure for Integration of Legacy Electrical Equipment into a Smart-Grid Using Wireless Sensor Networks</a>. Araújo, Paulo Régis C.; Filho, Raimir Holanda; Rodrigues, Joel  J. P. C.; <u>Oliveira, João P. C. M.</u>; Braga, Stephanie A. <i>Sensors 2018</i>. Volume 18, Issue 5. Article 1312. ISSN 1424-8220. 2018.</p>
 
