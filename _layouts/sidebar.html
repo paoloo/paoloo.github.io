@@ -30,7 +30,6 @@
           </div>
           <nav class="nav">
             <a class="{% if page.url == '/' %}active{% endif %}" href="{{ '/' | relative_url }}">Home</a>
-            <a class="{% if page.url contains '/about' %}active{% endif %}" href="{{ '/about/' | relative_url }}">About</a>
             <a class="{% if page.url contains '/research' %}active{% endif %}" href="{{ '/research/' | relative_url }}">Research</a>
             <a class="{% if page.url contains '/publications' %}active{% endif %}" href="{{ '/publications/' | relative_url }}">Publications</a>
             <a class="{% if page.url contains '/teaching' %}active{% endif %}" href="{{ '/teaching/' | relative_url }}">Teaching</a>

@@ -4,6 +4,8 @@ title: Publications
 permalink: /publications/
 ---
 
+<p><a target="_blank" href="https://doi.org/10.48550/arXiv.2607.26371"><img src="/res/ico_doi.gif" style="display: inline-block; width: 26px; height: 11px;" alt="DOI"/></a> <a target="_blank" href="https://arxiv.org/abs/2607.26371">A Controlled Candidate-Set Benchmark for Offline Satellite-Security Plan Decomposition</a>. <u>Oliveira, João Paolo Cavalcante Martins</u>; Teske, Lucas; Matias, Paulo. <i>arXiv preprint arXiv:2607.26371</i>. 2026. Dataset: <a target="_blank" href="https://huggingface.co/datasets/paolocmo/satsec-decomposition">satsec-decomposition</a> (<a target="_blank" href="https://doi.org/10.57967/hf/9586">DOI: 10.57967/hf/9586</a>).</p>
+
 <p><a target="_blank" href="https://doi.org/10.1109/ACCESS.2026.3705697"><img src="/res/ico_doi.gif" style="display: inline-block; width: 26px; height: 11px;" alt="DOI"/></a> <a href="/papers/IEEEACCESS2026-1.pdf">CubeSat Cybersecurity: An Overview</a>. <u>Oliveira, João Paolo Cavalcante Martins</u>; Vidal, Francisco José Targino; Mattiello-Francisco, Fátima. <i>IEEE Access</i>. Volume 14. Early Access. 2026.</p>
 
 <p><a target="_blank" href="http://dx.doi.org/10.3390/s18051312"><img src="/res/ico_doi.gif" style="display: inline-block; width: 26px; height: 11px;" alt="DOI"/></a> <a href="/papers/SENSORS2018.pdf">Infrastructure for Integration of Legacy Electrical Equipment into a Smart-Grid Using Wireless Sensor Networks</a>. Araújo, Paulo Régis C.; Filho, Raimir Holanda; Rodrigues, Joel  J. P. C.; <u>Oliveira, João P. C. M.</u>; Braga, Stephanie A. <i>Sensors 2018</i>. Volume 18, Issue 5. Article 1312. ISSN 1424-8220. 2018.</p>
