@@ -25,25 +25,11 @@ I use public surveys and astronomical archives to study problems that combine ph
 
 The methodological side matters as much as the model. I spend a lot of time on catalog selection effects, label quality, uncertainty, domain shift and data leakage. A high validation score is not useful when the split does not represent the sky where the model will operate.
 
-Related notes:
-
-- [TAP for Astronomy Data]({{ site.baseurl }}/2026/05/20/tap-for-astronomy-data/)
-- [Cross-matching Gaia and TESS with Python]({{ site.baseurl }}/2026/06/17/cross-matching-gaia-and-tess-with-python/)
-- [Classifying Asteroids with CyberEther]({{ site.baseurl }}/2026/06/06/classifying-asteroids-with-cyberether/)
-- [Training an Astronomy Model from Scratch]({{ site.baseurl }}/2026/06/07/training-an-astronomy-model-from-scratch/)
-
 ## Radio transients and signal processing
 
 Radio transients connect astrophysics to real-time systems. My interests include dedispersion, matched filtering, beamforming, pulse classification and the preservation of raw voltage data for high-time-resolution analysis.
 
 This work combines classical DSP with machine learning. I normally start from a physical signal model, build a measurable baseline, and only then add a learned component where it solves a specific limitation.
-
-Related notes:
-
-- [Fast Radio Bursts]({{ site.baseurl }}/2026/05/25/fast-radio-bursts/)
-- [Dedispersion]({{ site.baseurl }}/2026/05/27/dedispersion/)
-- [Matched Filtering from Scratch]({{ site.baseurl }}/2026/05/28/matched-filtering-from-scratch/)
-- [Building a Small RFI Classifier]({{ site.baseurl }}/2026/04/19/building-a-small-rfi-classifier/)
 
 ## Autonomous spacecraft and flight software
 
@@ -78,8 +64,6 @@ Topics I am exploring include:
 - CubeSat, payload and ground-segment security
 - FPGA payloads and onboard signal processing
 - hardware-in-the-loop measurement of timing, power and thermal behavior
-
-[Pulse](https://github.com/paoloo/pulse) is one result of this direction: a small deterministic scheduler for periodic tasks on resource-constrained microcontrollers.
 
 ## Biosignatures and exobiology
 
