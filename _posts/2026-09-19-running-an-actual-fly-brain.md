@@ -32,11 +32,12 @@ network you would build for a classification task. At the end I walk through
 dot through a webcam, using the fly's own control scheme instead of the x/y
 joystick you would normally bolt onto something like this.
 
-Everything below is real code from a working harness I built this month. I am
-not publishing the whole thing (it is a few hundred lines of glue code, some
-of it fiddly), but every equation, every constant, and the full tracking
-script are here, along with exactly where to get the underlying data
-yourself.
+Everything below is real code from a working harness I built this month, and
+the full implementation is public:
+[github.com/paoloo/flybrain](https://github.com/paoloo/flybrain), MIT
+licensed. Every equation and constant quoted in this post is also in that
+repository, along with the full tracking script and exactly where to get the
+underlying data yourself.
 
 ## What is actually being simulated
 
@@ -118,13 +119,15 @@ Once you have the raw tables, three things turn them into a usable graph:
    After this step my build has 25,582,938 directed, signed, weighted edges
    between 166,700 neurons.
 
-None of that is my invention. It is the exact selection and normalization
-recipe published by the [ornata/fly](https://github.com/ornata/fly) project
-(nicknamed fly64, because its original version drove Super Mario 64 through
-a fly brain), documented in their `docs/technical-notes.md`. If you want the
-full, unabridged loader code instead of the summary above, that repository
-is the place to read it; I followed it line by line for the selection rules
-and I am not going to reproduce their whole file here.
+None of that selection recipe is my invention. It is the exact rule published
+by the [ornata/fly](https://github.com/ornata/fly) project (nicknamed fly64,
+because its original version drove Super Mario 64 through a fly brain),
+documented in their `docs/technical-notes.md`. I followed it line by line,
+but wrote the loader itself from scratch rather than copying theirs, since
+that repository ships no license. The full, unabridged version I actually
+run is `flybrain/data.py` in
+[github.com/paoloo/flybrain](https://github.com/paoloo/flybrain/blob/main/flybrain/data.py),
+MIT licensed, safe to read and reuse.
 
 Two cell-type lists matter for anything you build on top of this. 6,006
 neurons of type R1-6, R7, and R8 are the photoreceptors, the fly's eyes.
@@ -133,13 +136,11 @@ DNp10) are the ones whose firing rate gets read out as a motor command
 later in this post. Both lists come straight from the published annotations,
 by cell-type name, nothing guessed.
 
-To turn the four raw tables into something you can actually simulate, you
-need your own loader that applies the three rules above and stores the
-result as a sparse matrix. That part is on you to write (or adapt from
-ornata/fly); it is maybe 150 lines of NumPy and Arrow calls, and writing it
-yourself is a genuinely good exercise in understanding what "signed,
+Turning the four raw tables into a sparse matrix, applying the three rules
+above, is about 150 lines of NumPy and Arrow calls in `data.py`. Reading it
+end to end is a genuinely good exercise in understanding what "signed,
 normalized synapse weight" means before you trust a number that came out of
-someone else's script.
+someone else's script, mine included.
 
 ## The neuron model: leaky integrate-and-fire, not backpropagation
 
@@ -551,21 +552,20 @@ swings sign with which hemisphere currently sees more green, exactly the
 behavior in the offline table above, now driven by a live camera instead of
 a pasted-in test blob.
 
-### A note on replicating this exact script
+### Running this exact script
 
 `2track.py`, in full, is at the bottom of this post. It imports `FlyBrain`
-from a small wrapper module I am not publishing here (it is the glue that
-loads the four connectome tables into the sparse matrix and runs the update
-loop from the "neuron model" section above). That module is maybe 200 lines
-and every equation in it is already given in full earlier in this post, so
-writing your own version is a real, doable exercise, not a leap of faith:
-load the connectome using the selection and normalization rules from the
-"getting your own copy" section, run the update loop from the "neuron
-model" section over a photoreceptor set built the way the "eyes" section
-describes, and expose `previous_rgb` and `visual_pixels` the way the eyes
-section does. If you would rather start from a complete, working reference
-instead of writing the loader from scratch, [ornata/fly](https://github.com/ornata/fly)
-is the project this entire model is faithful to, and its source is public.
+from `flybrain/brain.py`, and the whole package it lives in (`brain.py`,
+`retina.py`, `world.py`, `agent.py`, `data.py`) is published, MIT licensed,
+at [github.com/paoloo/flybrain](https://github.com/paoloo/flybrain). Clone
+it, run the data-preparation step from the "getting your own copy" section,
+and `2track.py` runs as shown, no reimplementation required. One detail
+worth knowing if you go read `retina.py`: it started as a file copied
+verbatim from ornata/fly, and I rewrote it from the documented specification
+so the repository would not depend on code with no license attached. The
+rewrite was checked against the original with a differential test over
+randomized receptor layouts before I trusted it; the equations did not
+change, only whose code they are.
 
 <figure class="wp-block-image"><img src="{{ site.baseurl }}/uploads/2026/09/malecns-flying-game-panel.png" alt="Left: the fly's rendered world, ground and sky with yellow landmark stripes. Right: the paired fisheye view of what the two simulated compound eyes see, with the HUD showing MaleCNS v1.0 and live stick values." /><figcaption>A different experiment with the same brain: the fly flying through a simple game world instead of tracking a laser. Left is the world as rendered; right is the paired fisheye view showing what each simulated eye actually receives, the same `previous_rgb` readout the laser tracker uses to find a color instead of a landmark.</figcaption></figure>
 
@@ -591,25 +591,28 @@ caveats, straight from what I checked while building it:
 
 ## Sources
 
-1. Berg, S. et al. "Sexual dimorphism in the complete Drosophila male
+1. [github.com/paoloo/flybrain](https://github.com/paoloo/flybrain), the full
+   implementation this post is drawn from, MIT licensed.
+2. Berg, S. et al. "Sexual dimorphism in the complete Drosophila male
    central nervous system connectome." *Cell* 189(18):5504-5526.e15, 2026.
    DOI 10.1016/j.cell.2026.08.015.
-2. MaleCNS v1.0 data distribution:
+3. MaleCNS v1.0 data distribution:
    [male-cns.janelia.org/download](https://male-cns.janelia.org/download/)
-3. [ornata/fly](https://github.com/ornata/fly), the reference implementation
-   this model's dynamics and selection rules are faithful to.
-4. Wang-Chen, S. et al. "NeuroMechFly v2: simulating embodied sensorimotor
+4. [ornata/fly](https://github.com/ornata/fly), the project this model's
+   dynamics and selection rules are faithful to (studied for its documented
+   rules and parameters; no code from it ships in the flybrain repository).
+5. Wang-Chen, S. et al. "NeuroMechFly v2: simulating embodied sensorimotor
    control in adult Drosophila." *Nature Methods* 21:2353-2362, 2024.
    DOI 10.1038/s41592-024-02497-y.
-5. [flyconnectome/2025malecns](https://github.com/flyconnectome/2025malecns),
+6. [flyconnectome/2025malecns](https://github.com/flyconnectome/2025malecns),
    source of the optic-column assignment spreadsheet.
-6. Yang, H.H. et al. "Fine-grained descending control of steering in walking
+7. Yang, H.H. et al. "Fine-grained descending control of steering in walking
    Drosophila." *Cell* 187(22):6290-6308.e27, 2024.
    DOI 10.1016/j.cell.2024.08.033.
-7. Namiki, S. et al. "A population of descending neurons that regulate the
+8. Namiki, S. et al. "A population of descending neurons that regulate the
    flight motor of Drosophila." *Current Biology* 32(5):1189-1196.e6, 2022.
    DOI 10.1016/j.cub.2022.01.008.
-8. Dickerson, B.H. et al. "Flies Regulate Wing Motion via Active Control of
+9. Dickerson, B.H. et al. "Flies Regulate Wing Motion via Active Control of
    a Dual-Function Gyroscope." *Current Biology* 29(20):3517-3524.e3, 2019.
    DOI 10.1016/j.cub.2019.08.065.
 
