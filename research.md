@@ -82,4 +82,4 @@ My usual workflow is empirical and systems-oriented:
 5. Test the complete path from raw data to deployment.
 6. Keep code, parameters and provenance available for reproduction.
 
-I am interested in collaborations that connect astronomy, machine learning, embedded systems and aerospace engineering. Code and experimental projects are available through my [GitHub profile](https://github.com/paoloo), while published work is listed on the [Publications]({{ site.baseurl }}/publications/) page.
+I am interested in collaborations that connect astronomy, machine learning, embedded systems and aerospace engineering. Code and experimental projects are available through my [GitHub profile](https://github.com/paoloo), published work is listed on the [Publications]({{ site.baseurl }}/publications/) page, and my full academic CV is on [HAL](https://cv.hal.science/paolo-oliveira).
