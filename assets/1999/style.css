@@ -1,0 +1,160 @@
+/* A personal-web annex. Deliberately independent of the main Jekyll layout. */
+:root {
+  color-scheme: dark;
+  --black: #080908;
+  --paper: #d4d3c5;
+  --white: #eeeddf;
+  --green: #c3d887;
+  --dim: #9b9e8d;
+  --line: #353a2a;
+  --red: #d38b7c;
+  --mono: "Lucida Console", "Courier New", monospace;
+}
+* { box-sizing: border-box; }
+html { scroll-padding-top: 24px; }
+body { margin: 0; background: var(--black); color: var(--paper); font: 14px/1.75 var(--mono); }
+body::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none; background: var(--black) url("crt-static.gif") center / cover no-repeat; }
+::selection { background: var(--green); color: var(--black); }
+a { color: var(--green); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { color: var(--black); background: var(--green); text-decoration: none; }
+a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--green); outline-offset: 5px; }
+button { font: inherit; color: var(--green); border: 1px solid var(--line); border-radius: 0; background: var(--black); cursor: pointer; }
+button:hover { color: var(--black); background: var(--green); }
+img, svg, canvas { max-width: 100%; }
+figure { margin: 0; }
+p { margin: 0 0 16px; }
+strong { color: var(--white); font-weight: bold; }
+.green { color: var(--green); }
+.red { color: var(--red); }
+.webpage { width: 80%; margin: 0 auto; }
+.skip-link { position: absolute; top: -70px; left: 20px; z-index: 3; padding: 8px 16px; background: var(--green); color: var(--black); }
+.skip-link:focus { top: 10px; }
+.utility-line { padding: 14px 0 10px; display: flex; justify-content: space-between; gap: 20px; font-size: 10px; letter-spacing: 1.2px; color: var(--dim); }
+.status-light { display: inline-block; width: 5px; height: 5px; margin: 0 5px 1px 0; background: var(--green); box-shadow: 0 0 7px #c3d88750; }
+.masthead { display: flex; justify-content: space-between; gap: 20px; align-items: center; padding: 22px 0 20px; }
+.wordmark { color: var(--white); text-decoration: none; font: 34px/1.2 Georgia, "Times New Roman", serif; letter-spacing: -1.4px; }
+.wordmark:hover { color: var(--green); background: none; }
+.delta { color: var(--green); font-size: 42px; vertical-align: -2px; display: inline-block; margin-right: 12px; }
+.asterisk { color: var(--red); font: 28px Georgia, serif; vertical-align: 8px; margin-left: 3px; }
+.masthead-note { font-size: 11px; line-height: 1.8; text-align: right; }
+.masthead-note span { color: var(--dim); }
+.ticker { display: flex; justify-content: center; gap: 20px; border-top: 1px solid var(--line); border-bottom: 3px double var(--line); padding: 7px 10px; font-size: 10px; letter-spacing: 1.5px; color: var(--green); text-align: center; }
+.ticker span { color: var(--red); }
+.page-grid { display: grid; grid-template-columns: minmax(0, 1fr) 230px; gap: 30px; padding: 30px 0 50px; }
+.small-label { font-size: 10px; letter-spacing: 1.35px; line-height: 1.7; color: var(--dim); }
+main { min-width: 0; }
+.welcome { padding: 0 0 26px; }
+.welcome .small-label { margin-bottom: 17px; font-size: 9px; }
+h1 { color: var(--white); margin: 0 0 21px; font: normal clamp(48px, 5.15vw, 72px)/1.03 Georgia, "Times New Roman", serif; letter-spacing: -3.7px; }
+h1 em { font-weight: normal; color: var(--green); }
+.welcome-line { font-size: 13px; line-height: 1.8; }
+.terminal-line { color: var(--dim); font-size: 11px; margin: 21px 0 0; }
+.terminal-line > span:first-child { color: var(--green); margin-right: 5px; }
+.cursor { color: var(--green); animation: cursor 1.4s step-end infinite; }
+@keyframes cursor { 50% { opacity: 0; } }
+section { padding-top: 20px; margin-top: 12px; margin-bottom: 34px; scroll-margin-top: 24px; }
+h2 { display: flex; align-items: baseline; gap: 11px; color: var(--white); margin: 0 0 19px; font: normal 23px/1.35 Georgia, "Times New Roman", serif; letter-spacing: -.45px; }
+.section-number { font: 10px var(--mono); color: var(--dim); letter-spacing: 1px; }
+.heading-symbol { font: 18px Georgia, serif; margin-left: auto; color: var(--green); }
+.annotation { color: var(--dim); font-size: 11px; line-height: 1.8; }
+.research-list { margin: 0; }
+.research-list > div { padding: 11px 0 13px; border-bottom: 1px dotted var(--line); }
+.research-list > div:first-child { padding-top: 0; }
+.research-list dt { color: var(--green); font-size: 13px; margin-bottom: 4px; }
+.research-list dt span { color: var(--red); margin-right: 7px; }
+.research-list dd { margin-left: 23px; font-size: 12px; color: var(--paper); }
+.link-row { display: flex; flex-wrap: wrap; gap: 10px 22px; font-size: 11px; margin: 17px 0 0; }
+.earth-list { list-style: none; padding: 0; margin: 18px 0; }
+.earth-list li { position: relative; padding-left: 18px; margin-bottom: 16px; }
+.earth-list li::before { content: "+"; color: var(--green); position: absolute; left: 0; }
+.marginalia { display: flex; gap: 18px; align-items: center; padding: 18px 0; margin: 24px 0 0; }
+.marginalia-mark { font: 34px Georgia, serif; color: var(--red); }
+.marginalia p { margin: 0; font: italic 17px/1.7 Georgia, serif; }
+.post-list { list-style: none; padding: 0; margin: 0 0 18px; }
+.post-list li { padding: 9px 0; border-bottom: 1px dotted var(--line); }
+.post-list time { display: block; color: var(--dim); font-size: 10px; margin-bottom: 3px; }
+.post-list a { font-size: 12px; }
+.button-wall { display: grid; grid-template-columns: repeat(2, 88px); justify-content: center; gap: 7px; margin: 18px 0 26px; }
+.button-wall img { display: block; width: 88px; height: 31px; image-rendering: pixelated; }
+.margins { min-width: 0; padding-top: 1px; }
+.figure-label { display: flex; align-items: center; justify-content: space-between; gap: 10px; color: var(--dim); font-size: 9px; letter-spacing: 1px; border-bottom: 1px solid var(--line); padding: 7px 0 9px; }
+.labyrinth { padding: 0 0 14px; }
+.labyrinth .figure-label { font-size: 8px; }
+.numogram { color: #9bab70; display: block; width: 100%; height: auto; margin: 7px auto; }
+.diagram-nodes circle { fill: var(--black); stroke: #a3b57a; stroke-width: .9; }
+.diagram-nodes text { fill: var(--green); font: 15px var(--mono); }
+figcaption { text-align: center; font: italic 12px/1.8 Georgia, serif; color: var(--paper); }
+figcaption span { font: 8px/1.7 var(--mono); color: var(--dim); }
+.receiver { margin-top: 27px; }
+#waterfall { display: block; margin-top: 10px; width: 100%; height: auto; aspect-ratio: 2; border: 1px solid var(--line); background: #10170c; image-rendering: pixelated; }
+.receiver-readout { display: flex; justify-content: space-between; align-items: center; margin-top: 9px; color: var(--green); font-size: 10px; }
+#retune { padding: 1px 6px; font-size: 9px; }
+.receiver > p { font-size: 9px; line-height: 1.7; color: var(--paper); margin-top: 10px; }
+.receiver > p span { color: var(--dim); font-size: 8px; }
+.margin-note { border-top: 1px dotted var(--line); margin-top: 29px; padding-top: 18px; text-align: center; }
+.margin-note .small-label { font-size: 8px; letter-spacing: 1.5px; }
+.tree { display: block; color: #a68c88; width: 106px; height: auto; margin: 25px auto 20px; opacity: .9; }
+.tree-caption { color: var(--dim); font: italic 13px/1.7 Georgia, serif; }
+.field-note { margin-top: 34px; padding-top: 15px; font-size: 11px; line-height: 1.8; }
+.field-note > span { font-size: 9px; letter-spacing: 1px; }
+.field-note p { margin-top: 12px; }
+.margin-colophon { margin-top: 36px; font-size: 8px; line-height: 2.2; letter-spacing: .6px; color: var(--dim); }
+.margin-colophon span { color: var(--paper); font: italic 12px/2 Georgia, serif; letter-spacing: 0; }
+footer { position: relative; padding: 20px 0 24px; border-top: 3px double var(--line); font-size: 10px; }
+footer > div { letter-spacing: 1px; }
+footer > div > .green { font-size: 15px; margin-right: 5px; }
+.footer-divider { color: var(--dim); margin: 0 10px; }
+footer p { color: var(--dim); font-size: 9px; margin: 10px 0 0; }
+.back-top { position: absolute; right: 0; top: 27px; font-size: 9px; }
+body.motion-paused .cursor { animation: none; }
+body.motion-paused::before { background-image: url("crt-still.png"); }
+@media (prefers-reduced-motion: reduce) {
+  .cursor { animation: none; }
+  body::before { background-image: url("crt-still.png"); }
+}
+@media (min-width: 1500px) { .webpage { margin-top: 20px; } }
+@media (max-width: 1080px) {
+  .webpage { width: 90%; }
+  .page-grid { grid-template-columns: minmax(0, 1fr) 210px; gap: 23px; }
+  h1 { font-size: 58px; }
+  .welcome .small-label { font-size: 8px; letter-spacing: .8px; }
+}
+@media (max-width: 880px) {
+  .page-grid { grid-template-columns: minmax(0, 1fr) 190px; gap: 24px; }
+  h1 { font-size: 66px; }
+  .masthead-note { font-size: 9px; }
+  .ticker { font-size: 8px; gap: 10px; letter-spacing: 1px; }
+  .back-top { position: static; display: inline-block; margin-top: 12px; }
+}
+@media (max-width: 600px) {
+  .webpage { width: auto; margin: 0 18px; }
+  .utility-line { font-size: 8px; letter-spacing: .3px; gap: 10px; }
+  .utility-line > span:first-child { max-width: 135px; }
+  .utility-line > span:last-child { text-align: right; align-self: center; }
+  .masthead { padding: 21px 0 18px; display: block; }
+  .wordmark { font-size: 30px; }
+  .delta { font-size: 35px; margin-right: 7px; }
+  .masthead-note { text-align: left; margin: 10px 0 0 37px; }
+  .masthead-note br { display: none; }
+  .masthead-note span { display: block; }
+  .ticker { padding: 8px 0; font-size: 8px; line-height: 1.9; }
+  .ticker > span { display: none; }
+  .page-grid { display: block; padding-top: 22px; }
+  h1 { font-size: clamp(48px, 12.7vw, 66px); letter-spacing: -2.9px; }
+  .welcome .small-label { font-size: 8px; }
+  .welcome { padding-bottom: 20px; }
+  .welcome-line { font-size: 12px; }
+  body { font-size: 13px; }
+  .margins { max-width: 230px; margin: 40px auto 0; }
+  .labyrinth { padding: 0 8px 10px; }
+  .figure-label, .labyrinth .figure-label { font-size: 7px; letter-spacing: .5px; }
+  figcaption { font-size: 10px; }
+  figcaption span { font-size: 7px; }
+  .receiver-readout { flex-wrap: wrap; gap: 8px; }
+  .receiver > p, .receiver > p span { font-size: 8px; }
+  .field-note { font-size: 10px; }
+  footer > div { letter-spacing: .3px; }
+  .footer-divider { margin: 0 5px; }
+  .marginalia { gap: 12px; padding: 15px 10px; }
+  .marginalia p { font-size: 15px; }
+}

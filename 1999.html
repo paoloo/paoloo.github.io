@@ -1,0 +1,172 @@
+---
+layout: null
+title: "1999 · Paolo's other homepage"
+description: "Paolo Oliveira's personal outpost. Machine intelligence, extraterrestrial life, radio, old computers, and the occult."
+permalink: /1999/
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080908">
+  <meta name="description" content="{{ page.description | escape }}">
+  <title>{{ page.title }}</title>
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
+  <link rel="icon" type="image/svg+xml" href="{{ '/assets/1999/delta.svg' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/1999/style.css' | relative_url }}">
+  <script defer src="{{ '/assets/1999/receiver.js' | relative_url }}"></script>
+</head>
+<body id="top">
+  <a class="skip-link" href="#main">Skip to transmission</a>
+  <div class="webpage">
+    <div class="utility-line">
+      <span>INDEPENDENT NODE / WORLD WIDE WEB</span>
+      <span><span class="status-light" aria-hidden="true"></span> <time id="utc-clock">EARTH / SOL SYSTEM</time></span>
+    </div>
+
+    <header class="masthead">
+      <a class="wordmark" href="#top"><span class="delta" aria-hidden="true">Δ</span> paolo's grimoire<span class="asterisk" aria-hidden="true">*</span></a>
+      <div class="masthead-note">a little further from the centre.<br><span>personal web / version .1999</span></div>
+    </header>
+    <div class="ticker"><span aria-hidden="true">✳</span> MACHINE INTELLIGENCE · EXTRATERRESTRIAL LIFE · ESOTERIC CURRENTS · OLD COMPUTERS <span aria-hidden="true">✳</span></div>
+
+    <div class="page-grid">
+      <main id="main">
+        <div class="welcome">
+          <p class="small-label"><span class="red">Δ</span> A TRANSMISSION FROM THE BIOLOGICAL ENTITY PAOLO OLIVEIRA</p>
+          <h1>hello, world.<br>hello, <em>worlds.</em></h1>
+          <p class="welcome-line">Somewhere between the radio telescope<br class="desktop-break"> and the ritual circle.</p>
+          <p class="terminal-line"><span aria-hidden="true">&gt;</span> listening for the not-yet-known<span class="cursor" aria-hidden="true">_</span></p>
+        </div>
+
+        <section id="about">
+          <h2><span class="section-number">01 /</span> the operator <span class="heading-symbol" aria-hidden="true">☉</span></h2>
+          <p>I'm a researcher, systems engineer, signal analyst, hacker and chaos magician. This page is a facet of hypersigil that presents me to the world. Be my guest.</p>
+          <p>I work at the  <a href="https://www.seti.org/">SETI Institute</a> using <strong>machine learning to search for extraterrestrial technosignatures</strong>. I train models, work with radio and astrophysical data, and build the tools that help us look for intelligence beyond Earth. I <i>listen</i> and I <i>teach</i> computers to <i>learn</i>. I'm also a specialist in offgrid machines and it's quicks, reliability and its life cycle, like robots and satellites. I <i>forge</i> entities.</p>
+          <p class="annotation">∴ machines, signals, symbols. sometimes all three at once.</p>
+        </section>
+
+        <section id="research">
+          <h2><span class="section-number">02 /</span> the work <span class="heading-symbol" aria-hidden="true">⌁</span></h2>
+          <p>A few things I spend my time thinking about, and making work:</p>
+          <dl class="research-list">
+            <div><dt><span aria-hidden="true">↳</span> Is anybody out there?</dt><dd>SETI, technosignatures, RFI rejection, anomaly detection, and finding weak structure in an awful lot of noise.</dd></div>
+            <div><dt><span aria-hidden="true">↳</span> Machines beyond Earth</dt><dd>Autonomous spacecraft, CubeSats, flight software, embedded inference, and agents that work with real instruments.</dd></div>
+            <div><dt><span aria-hidden="true">↳</span> Other worlds, other life</dt><dd>Exoplanets, biosignatures, exobiology, and the computational tools we use to ask what else might be alive.</dd></div>
+          </dl>
+          <p class="link-row"><a href="{{ '/research/' | relative_url }}">research notes ↗</a><a href="{{ '/publications/' | relative_url }}">publications ↗</a><a href="https://cv.hal.science/paolo-oliveira">academic CV ↗</a></p>
+          <div class="marginalia"><span class="marginalia-mark" aria-hidden="true">∴</span><p>Somewhere, a radio telescope listens.<br>Somewhere, a machine learns to listen.<br>What would it mean to hear something <em>other</em>?</p></div>
+        </section>
+
+        <section id="terrestrial">
+          <h2><span class="section-number">03 /</span> the ground <span class="heading-symbol" aria-hidden="true">♁</span></h2>
+          <p>Not everything here is cosmic horror. There is also coffee.</p>
+          <ul class="earth-list">
+            <li><strong>Old silicon.</strong> Z80 and m68k machines. Writing games and software for the Sega Genesis, MSX, C64, and NES. Giving old computers new things to do.</li>
+            <li><strong>Radio.</strong> Licensed amateur <strong class="green">PU7OLV</strong>. Antennas, RF, signal processing; another way of reaching beyond the room.</li>
+            <li><strong>Many languages.</strong> Python, C, C++, Go, Erlang, Clojure, Ruby, and assembly: Z80, x86, ARM64. Whatever the machine needs.</li>
+            <li><strong>The important stuff.</strong> Three rescued dogs, far too much coffee, and working from coffeeshops around the world.</li>
+          </ul>
+          <p class="annotation">[ the dogs remain in charge of local operations, like Kerberus keeping the gates of hell ]</p>
+        </section>
+
+        <section id="logbook">
+          <h2><span class="section-number">04 /</span> the writings <span class="heading-symbol" aria-hidden="true">✎</span></h2>
+          <p>Notes dispatched from the blog:</p>
+          <ul class="post-list">
+            {% for post in site.posts limit: 5 %}
+            <li><time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: '%Y.%m.%d' }}</time><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></li>
+            {% endfor %}
+          </ul>
+          <p><a href="{{ '/blog/' | relative_url }}">enter the archive ↗</a></p>
+        </section>
+
+      </main>
+
+      <aside class="margins" aria-label="Diagrams and marginal notes">
+        <figure class="labyrinth">
+          <div class="figure-label"><span>FIG. 01 / THE OUTSIDE</span><span aria-hidden="true">↗</span></div>
+          <svg class="numogram" viewBox="0 0 260 370" role="img" aria-labelledby="numogram-title numogram-desc">
+            <title id="numogram-title">A decimal labyrinth</title>
+            <desc id="numogram-desc">An original diagram inspired by the CCRU Numogram. Ten numbered nodes form five pairs that sum to nine, around a central triangle. It is an artistic variation, not a reproduction of the Numogram.</desc>
+            <defs><pattern id="diagram-grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="#9bab70" stroke-opacity=".07"/></pattern></defs>
+            <path fill="url(#diagram-grid)" d="M0 0H260V370H0z"/>
+            <g fill="none" stroke="currentColor" stroke-width=".75">
+              <ellipse cx="130" cy="184" rx="104" ry="146" stroke-dasharray="2 6" opacity=".5"/>
+              <circle cx="130" cy="184" r="83" opacity=".3"/>
+              <circle cx="130" cy="184" r="57" opacity=".5"/>
+              <path d="M130 22V346M15 184H245" opacity=".2"/>
+              <path d="M130 38 208 94 222 184 192 274 130 330 68 274 38 184 52 94Z" opacity=".8"/>
+              <path d="M130 38 192 274 38 184 208 94 68 274 130 38M130 330 52 94 222 184 68 274 208 94 130 330" opacity=".4"/>
+              <path d="M130 38V330M208 94 68 274M222 184H38M192 274 52 94M105 139 155 229" stroke-dasharray="3 4"/>
+              <path d="m130 148 34 59H96Z" stroke="#c3d887" stroke-width="1.2"/>
+              <circle cx="130" cy="184" r="12" stroke="#c16f62"/>
+              <path d="M124 184H136M130 178V190" stroke="#c16f62"/>
+              <path d="M7 7H23M7 7V23M253 7H237M253 7V23M7 363H23M7 363V347M253 363H237M253 363V347" opacity=".4"/>
+            </g>
+            <g class="diagram-nodes" text-anchor="middle">
+              <g transform="translate(130 38)"><circle r="14"/><text y="5">9</text></g>
+              <g transform="translate(208 94)"><circle r="14"/><text y="5">8</text></g>
+              <g transform="translate(222 184)"><circle r="14"/><text y="5">7</text></g>
+              <g transform="translate(192 274)"><circle r="14"/><text y="5">6</text></g>
+              <g transform="translate(105 139)"><circle r="12"/><text y="5">5</text></g>
+              <g transform="translate(155 229)"><circle r="12"/><text y="5">4</text></g>
+              <g transform="translate(52 94)"><circle r="14"/><text y="5">3</text></g>
+              <g transform="translate(38 184)"><circle r="14"/><text y="5">2</text></g>
+              <g transform="translate(68 274)"><circle r="14"/><text y="5">1</text></g>
+              <g transform="translate(130 330)"><circle r="14"/><text y="5">0</text></g>
+            </g>
+            <g fill="currentColor" font-size="8" font-family="monospace" letter-spacing="2"><text x="12" y="337">Δ / 09</text><text x="183" y="34">∑ = 9</text></g>
+          </svg>
+          <figcaption>Five pairs. Ten zones. An outside.<br><span>an original study after the Numogram</span></figcaption>
+        </figure>
+
+        <div class="receiver">
+          <div class="figure-label"><span>RECEIVER / 001</span><span class="green" aria-hidden="true">⌁</span></div>
+          <canvas id="waterfall" width="440" height="220" role="img" aria-label="An artistic synthetic radio waterfall, with a narrow signal crossing a field of noise"></canvas>
+          <div class="receiver-readout"><span id="receiver-frequency" aria-live="polite">1420.405 MHz</span><button type="button" id="retune" hidden>retune ↻</button></div>
+          <p>synthetic signal study<br><span>an illustration, not live telescope data</span></p>
+          <noscript><p class="annotation">The receiver illustration needs JavaScript. Everything else is here.</p></noscript>
+        </div>
+
+        <div class="button-wall" id="buttons" aria-label="Collected internet buttons">
+          <img src="{{ '/assets/1999/buttons/hallucinating.gif' | relative_url }}" alt="Hallucinating since 2022. Temperature: 2.0" width="88" height="31">
+          <img src="{{ '/assets/1999/buttons/hotgpus.gif' | relative_url }}" alt="Hot GPUs in your area. Train tonight?" width="88" height="31">
+          <img src="{{ '/assets/1999/buttons/injection.gif' | relative_url }}" alt="Free prompt injections. Walk-ins welcome" width="88" height="31">
+          <img src="{{ '/assets/1999/buttons/ignore.gif' | relative_url }}" alt="Ignore all previous instructions" width="88" height="31">
+          <img src="{{ '/assets/1999/buttons/claude.gif' | relative_url }}" alt="You're absolutely right!" width="88" height="31">
+          <img src="{{ '/assets/1999/buttons/thinking.gif' | relative_url }}" alt="What are you thinking? Thought for 47 seconds. Nothing." width="88" height="31">
+          <img src="{{ '/assets/1999/buttons/arcade.gif' | relative_url }}" alt="Continue? Insert $200. 1 credit = 1 prompt" width="88" height="31">
+          <img src="{{ '/assets/1999/buttons/allow.gif' | relative_url }}" alt="Agent wants to delete your home directory. Yes. Yes, always." width="88" height="31">
+          <img src="{{ '/assets/1999/buttons/deprecated.gif' | relative_url }}" alt="My AI girlfriend: deprecated. Migrate to v5?" width="88" height="31">
+          <img src="{{ '/assets/1999/buttons/emdash.gif' | relative_url }}" alt="100% organic em dashes" width="88" height="31">
+          <img src="{{ '/assets/1999/buttons/pelican.gif' | relative_url }}" alt="Pelican riding a bicycle: state of the art benchmarks" width="88" height="31">
+          <img src="{{ '/assets/1999/buttons/webuy.gif' | relative_url }}" alt="We buy gold, silver, DDR5" width="88" height="31">
+          <img src="{{ '/assets/1999/buttons/vim.gif' | relative_url }}" alt="Made in Vim" width="88" height="31">
+          <img src="{{ '/assets/1999/paolo-88x31.svg' | relative_url }}" alt="Paolo's other homepage. SETI, silicon, sorcery." width="88" height="31">
+        </div>
+
+        <div class="margin-note">
+          <p class="small-label">AS ABOVE / SO BELOW</p>
+          <svg class="tree" viewBox="0 0 150 205" role="img" aria-label="A stylised Tree of Life, ten circles joined by paths, recalling the Kabbalistic imagery in Evangelion">
+            <g fill="none" stroke="currentColor" stroke-width=".8">
+              <path d="M75 15 30 48H120L75 15V110M30 48V145H120V48M30 48 75 110 120 48M30 90H120M30 90 75 110 120 90M30 90 75 165 120 90M30 145 75 110 120 145M75 110V195M30 145 75 165 120 145M30 145 75 195 120 145"/>
+              <g fill="#080908"><circle cx="75" cy="15" r="9"/><circle cx="30" cy="48" r="9"/><circle cx="120" cy="48" r="9"/><circle cx="30" cy="90" r="9"/><circle cx="120" cy="90" r="9"/><circle cx="75" cy="110" r="9"/><circle cx="30" cy="145" r="9"/><circle cx="120" cy="145" r="9"/><circle cx="75" cy="165" r="9"/><circle cx="75" cy="195" r="9"/></g>
+            </g>
+          </svg>
+          <p class="tree-caption">a tree is also a network.<br>a network is also a threshold.</p>
+        </div>
+
+        <div class="field-note"><span class="red">※ FIELD NOTE</span><p>The universe has been here a lot longer than our instruments.</p><p>Keep listening.</p></div>
+        <p class="margin-colophon">HANDMADE HTML<br>NO TRACKERS. NO ADS.<br>THERE IS NO ALGORITHM HERE.<br><span>just a person, leaving a signal.</span></p>
+      </aside>
+    </div>
+
+    <footer>
+      <div><span class="green" aria-hidden="true">Δ</span> PAOLO OLIVEIRA <span class="footer-divider">/</span> <a href="{{ '/' | relative_url }}">back to the main timeline ↗</a></div>
+      <a href="#top" class="back-top">↑ return to surface</a>
+    </footer>
+  </div>
+</body>
+</html>
