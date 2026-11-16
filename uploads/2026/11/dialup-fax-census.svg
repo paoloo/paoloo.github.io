@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 504" font-family="sans-serif" font-size="14">
+  <style>
+    text{fill:#e8e6e3} .muted{fill:#9a9a9a} .bar{fill:#7fb4d6} .grid{stroke:#4a4a4a; stroke-width:1}
+  </style>
+  <text x="20" y="30" font-weight="bold" fill="#e8e6e3">Dial-up and fax artifacts on Shodan, 15 Nov 2026, honeypot-cleaned (log scale)</text>
+  <line class="grid" x1="320.0" y1="52" x2="320.0" y2="464" />
+  <text class="muted" x="320.0" y="486" text-anchor="middle" font-size="12">1</text>
+  <line class="grid" x1="513.3" y1="52" x2="513.3" y2="464" />
+  <text class="muted" x="513.3" y="486" text-anchor="middle" font-size="12">10</text>
+  <line class="grid" x1="706.7" y1="52" x2="706.7" y2="464" />
+  <text class="muted" x="706.7" y="486" text-anchor="middle" font-size="12">100</text>
+  <line class="grid" x1="900.0" y1="52" x2="900.0" y2="464" />
+  <text class="muted" x="610" y="502" text-anchor="middle" font-size="12">hosts (log scale)</text>
+  <text x="300" y="82" text-anchor="end" fill="#e8e6e3">Westermo industrial dial routers</text>
+  <rect class="bar" x="320" y="66" width="547.6" height="24" rx="3" />
+  <text x="875.6" y="83" font-size="12" fill="#e8e6e3">680</text>
+  <text x="300" y="128" text-anchor="end" fill="#e8e6e3">Email-to-fax (Kazoo/2600hz)</text>
+  <rect class="bar" x="320" y="112" width="464.3" height="24" rx="3" />
+  <text x="792.3" y="129" font-size="12" fill="#e8e6e3">252</text>
+  <text x="300" y="174" text-anchor="end" fill="#e8e6e3">HylaFAX (clean)</text>
+  <rect class="bar" x="320" y="158" width="282.7" height="24" rx="3" />
+  <text x="610.7" y="175" font-size="12" fill="#e8e6e3">29</text>
+  <text x="300" y="220" text-anchor="end" fill="#e8e6e3">Internet Rex (FidoNet)</text>
+  <rect class="bar" x="320" y="204" width="237.9" height="24" rx="3" />
+  <text x="565.9" y="221" font-size="12" fill="#e8e6e3">17</text>
+  <text x="300" y="266" text-anchor="end" fill="#e8e6e3">Digi PortServer TS</text>
+  <rect class="bar" x="320" y="250" width="285.6" height="24" rx="3" />
+  <text x="613.6" y="267" font-size="12" fill="#e8e6e3">30</text>
+  <text x="300" y="312" text-anchor="end" fill="#e8e6e3">Lantronix MSS100</text>
+  <rect class="bar" x="320" y="296" width="227.4" height="24" rx="3" />
+  <text x="555.4" y="313" font-size="12" fill="#e8e6e3">15</text>
+  <text x="300" y="358" text-anchor="end" fill="#e8e6e3">Livingston PortMaster (clean)</text>
+  <rect class="bar" x="320" y="342" width="150.4" height="24" rx="3" />
+  <text x="478.4" y="359" font-size="12" fill="#e8e6e3">6</text>
+  <text x="300" y="404" text-anchor="end" fill="#e8e6e3">Guru BBS / FrontDoor / MBSE</text>
+  <rect class="bar" x="320" y="388" width="92.2" height="24" rx="3" />
+  <text x="420.2" y="405" font-size="12" fill="#e8e6e3">3</text>
+</svg>
