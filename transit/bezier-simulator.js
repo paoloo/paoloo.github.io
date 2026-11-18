@@ -56,6 +56,11 @@
   const cadenceInput = root.querySelector("[data-bezier-cadence]");
   const seedInput = root.querySelector("[data-bezier-seed]");
   const exposureInput = root.querySelector("[data-bezier-exposure]");
+  const repeatInput = root.querySelector("[data-bezier-repeat]");
+  const periodInput = root.querySelector("[data-bezier-period]");
+  const epochInput = root.querySelector("[data-bezier-epoch]");
+  const spanSelect = root.querySelector("[data-bezier-span]");
+  const gapSelect = root.querySelector("[data-bezier-gap]");
   const compareInput = root.querySelector("[data-bezier-compare]");
   const downloadButton = root.querySelector("[data-bezier-download]");
   const downloadJsonButton = root.querySelector("[data-bezier-download-json]");
@@ -90,6 +95,11 @@
     cadenceSec: Number(cadenceInput.value),
     seed: Number(seedInput.value),
     finiteExposure: exposureInput.checked,
+    repeat: false,
+    periodDays: 3.5225,
+    epochOffset: 0,
+    repeatSpan: 5,
+    gapStyle: "continuous",
     compareCircle: compareInput.checked,
     equivalentRadius: 0,
     curve: [],
@@ -458,6 +468,8 @@
   /*
    * Observed light curve: optional finite exposures (supersampled boxcar
    * averaging of the continuous model) plus Gaussian photon noise in ppm.
+   * Repeat mode tiles the single-transit curve at the given period with
+   * optional data gaps, drawing one fresh noise realization per epoch.
    */
   function buildObservedCurve() {
     const rand = mulberry32(state.seed);
@@ -490,6 +502,34 @@
       }
       state.observedCurve.push({ phase: point.phase, flux: mean * (1 + gauss() * sigmaRel) });
     }
+  }
+
+  /* Epoch timing: transit n is centered at epochOffset + n * periodDays. */
+  function repeatEpochs(spanDays) {
+    const first = Math.floor(-state.epochOffset / state.periodDays);
+    const last = Math.ceil((spanDays - state.epochOffset) / state.periodDays);
+    const epochs = [];
+    for (let n = first; n <= last; n += 1) {
+      const center = state.epochOffset + n * state.periodDays;
+      if (center < -transitDurationDays() / 2 || center > spanDays + transitDurationDays()) continue;
+      epochs.push(center);
+    }
+    return epochs;
+  }
+
+  /* Data-gap windows [start, end) per gap style, in days from t0. */
+  function dataGaps(spanDays) {
+    const gaps = [];
+    if (state.gapStyle === "tess") {
+      for (let orbit = 1; orbit * 13.7 < spanDays; orbit += 1) {
+        gaps.push([orbit * 13.7, orbit * 13.7 + 1.0]);
+      }
+    } else if (state.gapStyle === "kepler") {
+      for (let month = 1; month * 30 < spanDays; month += 1) {
+        gaps.push([month * 30, month * 30 + 3.0]);
+      }
+    }
+    return gaps;
   }
 
   function recomputeCurve() {
@@ -1010,7 +1050,11 @@
         noisePpm: state.noisePpm,
         cadenceSec: state.cadenceSec,
         seed: state.seed,
-        finiteExposure: state.finiteExposure
+        finiteExposure: state.finiteExposure,
+        repeat: state.repeat,
+        periodDays: state.periodDays,
+        epochOffset: state.epochOffset,
+        gapStyle: state.gapStyle
       }
     };
   }
@@ -1028,30 +1072,77 @@
   }
 
   /* Observed samples on the cadence grid (nearest engine sample, so noise is
-   * preserved, not interpolated away). Used for export. */
+   * preserved, not interpolated away). Used for export. In repeat mode, tiles
+   * the transit at the period with optional gaps and per-epoch noise. */
   function exportRows() {
     const rows = [];
     const n = state.observedCurve.length;
-    const durationDays = transitDurationDays();
-    const cadenceDays = state.cadenceSec / 86400;
-    const nPoints = Math.max(2, Math.min(n, Math.round(durationDays / cadenceDays) + 1));
     const sigma = state.noisePpm / 1e6;
-    for (let index = 0; index < nPoints; index += 1) {
-      const phase = nPoints === 1 ? 0.5 : index / (nPoints - 1);
-      const nearest = Math.round(phase * (n - 1));
-      const observed = state.observedCurve[nearest];
+
+    if (!state.repeat) {
+      const durationDays = transitDurationDays();
+      const cadenceDays = state.cadenceSec / 86400;
+      const nPoints = Math.max(2, Math.min(n, Math.round(durationDays / cadenceDays) + 1));
+      for (let index = 0; index < nPoints; index += 1) {
+        const phase = nPoints === 1 ? 0.5 : index / (nPoints - 1);
+        const nearest = Math.round(phase * (n - 1));
+        const observed = state.observedCurve[nearest];
+        rows.push({
+          time: BJD_OFFSET + phaseToTime(phase),
+          flux: observed.flux,
+          fluxErr: observed.flux * sigma,
+          model: state.curve[nearest].flux,
+          epoch: 0
+        });
+      }
+      return rows;
+    }
+
+    const rand = mulberry32(state.seed + 1);
+    const gauss = makeGaussian(rand);
+    const cadenceDays = state.cadenceSec / 86400;
+    const T14 = transitDurationDays();
+    const spanDays = Number(spanSelect.value);
+    const gaps = dataGaps(spanDays);
+    const inGap = t => gaps.some(([start, end]) => t >= start && t < end);
+
+    /* Time axis: absolute days; transit k is centered at epochOffset + k*period.
+     * Cover from before the first transit to after the last one. */
+    const epochs = repeatEpochs(spanDays);
+    const t0 = epochs[0] - T14 / 2;
+    const tEnd = epochs[epochs.length - 1] + T14 / 2;
+    for (let t = t0; t <= tEnd; t += cadenceDays) {
+      if (inGap(t)) continue;
+      /* Nearest epoch whose transit window contains t; else flux = 1 (OOT). */
+      let phase = null;
+      let epoch = 0;
+      for (let k = 0; k < epochs.length; k += 1) {
+        const dt = t - epochs[k];
+        if (Math.abs(dt) <= T14 / 2) {
+          epoch = k + 1;
+          phase = 0.5 + dt / T14;
+          break;
+        }
+      }
+      let model = 1;
+      if (phase !== null) {
+        const nearest = clamp(Math.round(phase * (n - 1)), 0, n - 1);
+        model = state.curve[nearest].flux;
+      }
+      const flux = model * (1 + gauss() * sigma);
       rows.push({
-        time: BJD_OFFSET + phaseToTime(phase),
-        flux: observed.flux,
-        fluxErr: observed.flux * sigma,  // 1-sigma of the multiplicative noise draw
-        model: state.curve[nearest].flux
+        time: BJD_OFFSET + t,
+        flux,
+        fluxErr: flux * sigma,
+        model,
+        epoch
       });
     }
     return rows;
   }
 
   function buildCsv(rows) {
-    const header = [
+    const headerLines = [
       "# Bezier Transit Simulator light curve (Project Tarang)",
       `# generated: ${new Date().toISOString()}`,
       `# mission: tarang`,
@@ -1068,13 +1159,19 @@
       `# noise_ppm: ${state.noisePpm}`,
       `# finite_exposure: ${state.finiteExposure ? "true" : "false"}`,
       `# seed: ${state.seed}`,
+      `# repeat_transits: ${state.repeat ? "true" : "false"}`,
+      state.repeat ? `# period_days: ${state.periodDays}` : null,
+      state.repeat ? `# epoch_offset_days: ${state.epochOffset}` : null,
+      state.repeat ? `# gap_style: ${state.gapStyle}` : null,
       "# time = absolute BJD (TDB), days; flux normalized to 1.0 out of transit;",
       "# flux_err = 1-sigma relative error; model = noiseless simulated flux.",
-      "time,flux,flux_err,model"
+      "# epoch = transit number (0 = out of transit); meaningful in repeat mode.",
+      "time,flux,flux_err,model,epoch"
     ];
     const lines = rows.map(row =>
-      `${row.time.toFixed(7)},${row.flux.toFixed(7)},${row.fluxErr.toFixed(7)},${row.model.toFixed(7)}`
+      `${row.time.toFixed(7)},${row.flux.toFixed(7)},${row.fluxErr.toFixed(7)},${row.model.toFixed(7)},${row.epoch}`
     );
+    const header = headerLines.filter(line => line !== null);
     return `${header.join("\n")}\n${lines.join("\n")}\n`;
   }
 
@@ -1131,6 +1228,22 @@
         if (typeof params.finiteExposure === "boolean") {
           state.finiteExposure = params.finiteExposure;
           exposureInput.checked = params.finiteExposure;
+        }
+        if (typeof params.repeat === "boolean") {
+          state.repeat = params.repeat;
+          repeatInput.checked = params.repeat;
+        }
+        if (typeof params.periodDays === "number" && params.periodDays >= 0.05) {
+          state.periodDays = params.periodDays;
+          periodInput.value = String(params.periodDays);
+        }
+        if (typeof params.epochOffset === "number") {
+          state.epochOffset = params.epochOffset;
+          epochInput.value = String(params.epochOffset);
+        }
+        if (typeof params.gapStyle === "string") {
+          state.gapStyle = params.gapStyle;
+          gapSelect.value = params.gapStyle;
         }
         if (data.model === "custom" && Array.isArray(data.anchors)) {
           state.customAnchors = data.anchors
@@ -1220,6 +1333,36 @@
 
   exposureInput.addEventListener("change", () => {
     state.finiteExposure = exposureInput.checked;
+    state.dirty = true;
+  });
+
+  repeatInput.addEventListener("change", () => {
+    state.repeat = repeatInput.checked;
+    state.dirty = true;
+  });
+
+  periodInput.addEventListener("input", () => {
+    const value = Number(periodInput.value);
+    if (Number.isFinite(value) && value >= 0.05) {
+      state.periodDays = value;
+      state.dirty = true;
+    }
+  });
+
+  epochInput.addEventListener("input", () => {
+    const value = Number(epochInput.value);
+    if (Number.isFinite(value)) {
+      state.epochOffset = value;
+      state.dirty = true;
+    }
+  });
+
+  spanSelect.addEventListener("change", () => {
+    state.dirty = true;
+  });
+
+  gapSelect.addEventListener("change", () => {
+    state.gapStyle = gapSelect.value;
     state.dirty = true;
   });
 

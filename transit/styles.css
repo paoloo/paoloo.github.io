@@ -2234,6 +2234,50 @@ h1 {
   gap: 14px;
 }
 
+.bezier-repeat-row {
+  display: grid;
+  grid-template-columns: auto repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  align-items: end;
+  padding: 10px 12px;
+  border: 1px dashed rgba(97, 216, 228, 0.35);
+  border-radius: var(--radius);
+  background: rgba(97, 216, 228, 0.04);
+}
+
+.bezier-repeat-row label {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+  font-size: 0.85rem;
+}
+
+.bezier-repeat-row label > span {
+  color: var(--cyan);
+  font-size: 0.7rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.bezier-repeat-row input[type="number"],
+.bezier-repeat-row select {
+  width: 100%;
+  min-height: 34px;
+  padding: 4px 8px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--ink);
+  background: rgba(13, 15, 13, 0.7);
+  font-weight: 700;
+}
+
+@media (max-width: 860px) {
+  .bezier-repeat-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 .bezier-export-actions {
   display: flex;
   flex-wrap: wrap;

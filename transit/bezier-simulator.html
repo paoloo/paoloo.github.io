@@ -188,6 +188,37 @@
           <button class="button button-secondary" type="button" data-bezier-import>Load project (JSON)</button>
           <input type="file" accept="application/json,.json" data-bezier-import-file hidden>
         </div>
+        <div class="bezier-repeat-row">
+          <label class="bezier-check">
+            <input type="checkbox" data-bezier-repeat>
+            <span>Repeat transits</span>
+          </label>
+          <label>
+            <span>Period (days)</span>
+            <input type="number" min="0.05" step="0.01" value="3.5225" data-bezier-period>
+          </label>
+          <label>
+            <span>Epoch offset (days)</span>
+            <input type="number" step="0.001" value="0" data-bezier-epoch>
+          </label>
+          <label>
+            <span>Span (days)</span>
+            <select data-bezier-span>
+              <option value="20" selected>20 d</option>
+              <option value="30">30 d</option>
+              <option value="90">90 d</option>
+              <option value="27.4">1 Kepler quarter (~27.4 d)</option>
+            </select>
+          </label>
+          <label>
+            <span>Gap style</span>
+            <select data-bezier-gap>
+              <option value="continuous" selected>Continuous</option>
+              <option value="tess">TESS-like gaps (1 d every 13.7 d)</option>
+              <option value="kepler">Kepler-like gaps (3 d every 30 d)</option>
+            </select>
+          </label>
+        </div>
         <details class="bezier-usage">
           <summary>Load in Python (lightkurve)</summary>
           <pre>import os, lightkurve as lk
