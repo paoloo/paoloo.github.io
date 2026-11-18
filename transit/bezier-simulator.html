@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bezier Simulator | Project Tarang</title>
+    <meta
+      name="description"
+      content="Browser-native Bezier shadow simulator for technosignature-oriented anomalous light-curve demonstrations, with lightkurve-ready CSV export."
+    >
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body class="lab-page bezier-page">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <canvas class="sky-canvas" data-sky-canvas aria-hidden="true"></canvas>
+
+    <header class="site-header">
+      <a class="brand" href="https://technosurveys.com/index.html" aria-label="Project Tarang home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>
+          <span class="brand-name">Project Tarang</span>
+          <span class="brand-kicker">Browser-native shadow lab</span>
+        </span>
+      </a>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="https://technosurveys.com/index.html">Home</a>
+        <a href="https://technosurveys.com/megaminer.html">MegaMiner</a>
+        <a aria-current="page" href="bezier-simulator.html">Simulator</a>
+        <a href="https://technosurveys.com/analysis-progress.html">Analysis progress</a>
+        <a href="https://technosurveys.com/index.html#spectra">Spectra</a>
+        <a href="https://technosurveys.com/about.html">About Us</a>
+      </nav>
+    </header>
+
+    <main id="main" class="bezier-simulator" data-bezier-simulator>
+      <section class="bezier-topline">
+        <div>
+          <p class="eyebrow">Supersampled Bezier shadow engine</p>
+          <h1>Bezier Transit Simulator</h1>
+          <p>
+            A browser-native demonstration inspired by the EightBitTransit shadow-imaging formalism:
+            fill a 192 x 192 fractional-opacity grid with an irregular Bezier structure, slide that
+            occulter along an arbitrary impact-parameter chord across a quadratic limb-darkened
+            stellar disk, and integrate the resulting light curve at finite cadence — then export a
+            light curve ready for the Python <code>lightkurve</code> package. No server required.
+          </p>
+        </div>
+        <div class="bezier-status" aria-live="polite">
+          <span>Current model</span>
+          <strong data-bezier-model>Random Bezier</strong>
+          <small data-bezier-stats>Equivalent Rp/R* 0.000</small>
+        </div>
+      </section>
+
+      <section class="bezier-controls" aria-label="Bezier simulator controls">
+        <div class="bezier-control-group bezier-model-group" role="tablist" aria-label="Structure models">
+          <button class="bezier-model-button active" type="button" role="tab" aria-selected="true" data-shape-model="random">
+            Random Bezier
+          </button>
+          <button class="bezier-model-button" type="button" role="tab" aria-selected="false" data-shape-model="screen">
+            Thin Screen
+          </button>
+          <button class="bezier-model-button" type="button" role="tab" aria-selected="false" data-shape-model="fragmented">
+            Fragmented Mask
+          </button>
+          <button class="bezier-model-button" type="button" role="tab" aria-selected="false" data-shape-model="custom">
+            Custom Anchors
+          </button>
+        </div>
+
+        <div class="bezier-control-group bezier-actions" aria-label="Simulation actions">
+          <button class="button button-primary" type="button" data-bezier-random>
+            <span class="button-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 4v6h6M20 20v-6h-6M20 10a7 7 0 0 0-12.2-4.7L4 10M4 14a7 7 0 0 0 12.2 4.7L20 14"/></svg>
+            </span>
+            New random
+          </button>
+          <button class="button button-secondary" type="button" data-bezier-clear>Clear anchors</button>
+          <button class="icon-button" type="button" data-bezier-play aria-label="Pause animation" title="Pause animation">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5h3v14H8zM13 5h3v14h-3z"/></svg>
+          </button>
+        </div>
+
+        <div class="bezier-slider-grid" aria-label="Numerical parameters">
+          <label>
+            <span>Structure scale (R*)</span>
+            <input type="range" min="0.45" max="1.15" step="0.01" value="0.55" data-bezier-scale>
+          </label>
+          <label>
+            <span>Limb darkening u1</span>
+            <input type="range" min="0" max="0.9" step="0.01" value="0.48" data-bezier-u1>
+          </label>
+          <label>
+            <span>Limb darkening u2</span>
+            <input type="range" min="-0.3" max="0.45" step="0.01" value="0.1" data-bezier-u2>
+          </label>
+          <label>
+            <span>Impact parameter b</span>
+            <input type="range" min="0" max="0.95" step="0.01" value="0.25" data-bezier-b>
+          </label>
+          <label>
+            <span>Transit speed</span>
+            <input type="range" min="0.35" max="1.8" step="0.01" value="0.82" data-bezier-speed>
+          </label>
+          <label>
+            <span>Noise (ppm)</span>
+            <input type="range" min="0" max="2000" step="10" value="120" data-bezier-noise>
+          </label>
+          <label>
+            <span>Cadence</span>
+            <select data-bezier-cadence>
+              <option value="60">1 min</option>
+              <option value="120" selected>2 min</option>
+              <option value="300">5 min</option>
+              <option value="600">10 min</option>
+              <option value="1800">30 min</option>
+            </select>
+          </label>
+          <label>
+            <span>Random seed</span>
+            <input type="number" min="0" step="1" value="2026" data-bezier-seed>
+          </label>
+          <label class="bezier-check">
+            <input type="checkbox" checked data-bezier-exposure>
+            <span>Finite exposure</span>
+          </label>
+          <label class="bezier-check">
+            <input type="checkbox" checked data-bezier-compare>
+            <span>Circle comparison</span>
+          </label>
+        </div>
+
+        <div class="bezier-custom-guide" data-custom-guide hidden>
+          <div>
+            <span>Build your own shape</span>
+            <strong>Click inside the 2D occultation plane to place anchor points.</strong>
+            <p>
+              Place at least three anchors around the star-side editor circle. Click an existing anchor
+              again to remove it. The Bezier boundary and light curve update automatically.
+            </p>
+          </div>
+          <div class="bezier-custom-count" data-custom-guide-count>0 / 3 anchors</div>
+        </div>
+      </section>
+
+      <section class="bezier-workspace" aria-label="Bezier transit simulator">
+        <article class="bezier-panel bezier-stage-panel">
+          <div class="bezier-panel-header">
+            <div>
+              <span>2D occultation plane</span>
+              <strong data-bezier-stage-title>Raster shadow across stellar disk</strong>
+            </div>
+            <small data-bezier-anchor-count>Anchors 0</small>
+          </div>
+          <canvas
+            class="bezier-stage-canvas"
+            data-bezier-stage
+            aria-label="Animated Bezier structure crossing a stellar disk"
+          ></canvas>
+        </article>
+
+        <article class="bezier-panel bezier-curve-panel">
+          <div class="bezier-panel-header">
+            <div>
+              <span>Relative flux</span>
+              <strong>Light curve and fitted-circle residual</strong>
+            </div>
+            <small data-bezier-depth>Depth 0 ppt</small>
+          </div>
+          <canvas
+            class="bezier-curve-canvas"
+            data-bezier-curve
+            aria-label="Computed transit light curve for the selected Bezier structure"
+          ></canvas>
+        </article>
+      </section>
+
+      <section class="bezier-export" aria-label="Light curve export and fit summary">
+        <div class="bezier-export-actions">
+          <button class="button button-primary" type="button" data-bezier-download>
+            <span class="button-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 3v12m0 0 5-5m-5 5-7-7M4 21h16"/></svg>
+            </span>
+            Download light curve (CSV)
+          </button>
+          <button class="button button-secondary" type="button" data-bezier-download-json>Save project (JSON)</button>
+          <button class="button button-secondary" type="button" data-bezier-import>Load project (JSON)</button>
+          <input type="file" accept="application/json,.json" data-bezier-import-file hidden>
+        </div>
+        <dl class="bezier-summary">
+          <div><dt>Duration T14</dt><dd data-sum-duration>—</dd></div>
+          <div><dt>Cadence</dt><dd data-sum-cadence>—</dd></div>
+          <div><dt>Export points</dt><dd data-sum-points>—</dd></div>
+          <div><dt>Depth</dt><dd data-sum-depth>—</dd></div>
+          <div><dt>Geometric Rp/R*</dt><dd data-sum-rp>—</dd></div>
+          <div><dt>Fitted circle Rp/R*</dt><dd data-sum-fit-rp>—</dd></div>
+          <div><dt>Fitted b</dt><dd data-sum-fit-b>—</dd></div>
+          <div><dt>Residual RMS</dt><dd data-sum-rms>—</dd></div>
+        </dl>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>Project Tarang</span>
+      <a href="https://technosurveys.com/megaminer.html">MegaMiner</a>
+      <a href="https://technosurveys.com/analysis-progress.html">Analysis progress</a>
+      <a href="https://technosurveys.com/index.html#spectra">Spectral archives</a>
+    </footer>
+
+    <script src="app.js"></script>
+    <script src="bezier-simulator.js"></script>
+  </body>
+</html>
