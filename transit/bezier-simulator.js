@@ -1070,15 +1070,6 @@
       `# seed: ${state.seed}`,
       "# time = absolute BJD (TDB), days; flux normalized to 1.0 out of transit;",
       "# flux_err = 1-sigma relative error; model = noiseless simulated flux.",
-      "# Python quick start (lightkurve):",
-      "#   import os, lightkurve as lk",
-      "#   csv = os.path.expanduser('bezier_lightcurve.csv')  # expanduser handles ~",
-      "#   lc = lk.LightCurve.read(csv, format='csv', time_column='time',",
-      "#                           time_format='jd', time_scale='tdb', comment='#')",
-      "#   meta = {ln.split(':',1)[0].lstrip('# ').strip().upper():",
-      "#           ln.split(':',1)[1].strip()",
-      "#           for ln in open(csv) if ln.startswith('#') and ':' in ln}",
-      "#   lc.meta.update(meta)   # -> lc.mission, lc.quarter, lc.seed, ...",
       "time,flux,flux_err,model"
     ];
     const lines = rows.map(row =>
@@ -1087,34 +1078,10 @@
     return `${header.join("\n")}\n${lines.join("\n")}\n`;
   }
 
-  function buildLightkurveSnippet() {
-    return [
-      "import lightkurve as lk",
-      "import numpy as np",
-      "",
-      "lc = lk.LightCurve.read('bezier_lightcurve.csv', format='csv',",
-      "                        time_column='time', time_format='jd',",
-      "                        time_scale='tdb', comment='#')",
-      "# time is absolute BJD (TDB). flux/flux_err/model columns load automatically.",
-      "lc.scatter()",
-      "",
-      "# Compare against the noiseless injected model:",
-      "import pandas as pd",
-      "tab = pd.read_csv('bezier_lightcurve.csv', comment='#')",
-      "model = lk.LightCurve(time=tab['time'], flux=tab['model'])",
-      "ax = lc.plot(); model.plot(ax=ax, color='r', lw=1)",
-      ""
-    ].join("\n");
-  }
-
   function onDownload() {
     recomputeCurve();
     const rows = exportRows();
     downloadText("bezier_lightcurve.csv", buildCsv(rows));
-    if (downloadJsonButton.dataset.snippetSent !== "1") {
-      downloadJsonButton.dataset.snippetSent = "1";
-      console.info("lightkurve usage:\n" + buildLightkurveSnippet());
-    }
   }
 
   function onDownloadJson() {
