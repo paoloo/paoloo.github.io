@@ -1057,6 +1057,7 @@
       `# mission: tarang`,
       `# quarter: 666`,
       `# model: ${state.modelName}`,
+      `# structure_scale: ${state.scale.toFixed(4)}`,
       `# rp_over_rstar_geometric: ${state.equivalentRadius.toFixed(6)}`,
       `# rp_over_rstar_fitted_circle: ${state.fit ? state.fit.p.toFixed(6) : "n/a"}`,
       `# impact_parameter_fitted: ${state.fit ? state.fit.b.toFixed(4) : "n/a"}`,
