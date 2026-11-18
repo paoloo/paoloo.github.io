@@ -2240,6 +2240,32 @@ h1 {
   gap: 10px;
 }
 
+.bezier-usage {
+  border: 1px solid rgba(244, 240, 230, 0.11);
+  border-radius: var(--radius);
+  background: rgba(244, 240, 230, 0.03);
+}
+
+.bezier-usage summary {
+  padding: 10px 14px;
+  color: var(--amber);
+  font-size: 0.82rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.bezier-usage pre {
+  margin: 0;
+  padding: 12px 14px 14px;
+  border-top: 1px solid rgba(244, 240, 230, 0.11);
+  color: var(--ink);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  overflow-x: auto;
+}
+
 .bezier-summary {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
