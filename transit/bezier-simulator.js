@@ -1070,6 +1070,15 @@
       `# seed: ${state.seed}`,
       "# time = absolute BJD (TDB), days; flux normalized to 1.0 out of transit;",
       "# flux_err = 1-sigma relative error; model = noiseless simulated flux.",
+      "# Python quick start (lightkurve):",
+      "#   import lightkurve as lk, pandas as pd",
+      "#   csv = 'bezier_lightcurve.csv'",
+      "#   lc = lk.LightCurve.read(csv, format='csv', time_column='time',",
+      "#                           time_format='jd', time_scale='tdb', comment='#')",
+      "#   meta = {ln.split(':',1)[0].lstrip('# ').strip().upper():",
+      "#           ln.split(':',1)[1].strip()",
+      "#           for ln in open(csv) if ln.startswith('#') and ':' in ln}",
+      "#   lc.meta.update(meta)   # -> lc.mission, lc.quarter, lc.seed, ...",
       "time,flux,flux_err,model"
     ];
     const lines = rows.map(row =>
