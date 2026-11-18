@@ -996,6 +996,8 @@
   function serializeProject() {
     return {
       version: 2,
+      mission: "tarang",
+      quarter: 666,
       model: state.model,
       anchors: state.model === "custom" ? state.customAnchors : state.anchors,
       boundaries: state.boundaries,
@@ -1052,13 +1054,15 @@
     const header = [
       "# Bezier Transit Simulator light curve (Project Tarang)",
       `# generated: ${new Date().toISOString()}`,
+      `# mission: tarang`,
+      `# quarter: 666`,
       `# model: ${state.modelName}`,
       `# rp_over_rstar_geometric: ${state.equivalentRadius.toFixed(6)}`,
       `# rp_over_rstar_fitted_circle: ${state.fit ? state.fit.p.toFixed(6) : "n/a"}`,
       `# impact_parameter_fitted: ${state.fit ? state.fit.b.toFixed(4) : "n/a"}`,
       `# limb_darkening: quadratic u1=${state.u1.toFixed(4)} u2=${state.u2.toFixed(4)}`,
       `# impact_parameter_b: ${state.b.toFixed(4)}`,
-      `# duration_days: ${transitDurationDays().toFixed(6)}`,
+      `# data_span_days: ${transitDurationDays().toFixed(6)}  (full chord crossing; photometric T14 is shorter)`,
       `# cadence_sec: ${state.cadenceSec}`,
       `# noise_ppm: ${state.noisePpm}`,
       `# finite_exposure: ${state.finiteExposure ? "true" : "false"}`,
